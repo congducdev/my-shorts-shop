@@ -1,22 +1,36 @@
 // app/products/page.tsx
-import { getProducts } from '../../../lib/api';
+import { fetchProducts } from '../../../lib/api';
 import ProductCard from '../../../components/ProductCard';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-// import { Grid, Container } from '@mui/material';
 
-export default async function ProductPage() {
-  const products = await getProducts();
+export default async function ProductsPage() {
+  const products = await fetchProducts();
 
   return (
-    <Container sx={{ mt: 4 }}>
-      <Grid container spacing={4}>
-        {products.map((product: any) => (
-          <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <ProductCard product={product} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <div style={{
+      display: 'grid',
+      gap: '16px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+    }}>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
   );
 }
+
+
+// // app/products/page.tsx
+// import { fetchProducts } from '../../../lib/api';
+// import ProductCard from '../../../components/ProductCard';
+
+// export default async function ProductsPage() {
+//   const products = await fetchProducts();
+
+//   return (
+//     <div style={{ display: 'grid', gap: '16px', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+//       {products.map((product) => (
+//         <ProductCard key={product.id} product={product} />
+//       ))}
+//     </div>
+//   );
+// }

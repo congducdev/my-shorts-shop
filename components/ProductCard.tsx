@@ -1,6 +1,6 @@
 // components/ProductCard.tsx
 'use client';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 type Product = {
   id: string;
@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <CardMedia component="img" height="200" image={product.image.url} alt={product.title} />
       <CardContent>
         <Typography variant="h6">{product.title}</Typography>
-        <Typography color="text.secondary">{product.price} VND</Typography>
+        <Typography variant="body2">${product.price}</Typography>
       </CardContent>
     </Card>
   );
